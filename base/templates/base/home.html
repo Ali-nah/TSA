@@ -1,0 +1,140 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="https://www.pngplay.com/wp-content/uploads/6/Emoji-PNG-HD-Quality.png">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="{% static 'styles/styles.css' %}" /> -->
+    <title>Sentiment Analysis System Using NB</title>
+   
+
+    <style>
+
+        body{
+            /* background-color: rgb(80, 81, 82); */
+            /* background-image: linear-gradient(to bottom right, rgba(0, 174, 255, 0.925), rgb(45, 245, 145)); */
+            background-image: url("https://img.freepik.com/free-photo/black-smooth-textured-paper-background_53876-98333.jpg?size=626&ext=jpg");
+            background-size:cover;
+            
+            
+        }
+
+        label{
+            /* color: rgb(252, 252, 252); */
+            font-size: 30px;
+            position: relative;
+            top: 4px;
+            /* -webkit-text-stroke: 1px black; */
+                color: white;
+                /* text-shadow:
+                    3px 3px 0 rgb(92, 91, 91),
+                    -1px -1px 0 rgb(73, 72, 72),  
+                    1px -1px 0 #000,
+                    -1px 1px 0 #000,
+                    1px 1px 0 #000; */
+        }
+        #text{
+            border: 1px solid #fff;
+            color: #fff;
+            outline: none;
+            width: auto;
+            height: 25px;
+            border-radius: 5px;
+            background: transparent;
+            padding-left: 10px;
+        }
+        h1{
+            color: #fff;
+            /* text-decoration: underline; */
+            
+        }
+
+            
+
+        .container{
+            position: absolute;
+            left: 35%;
+            top: 5%;
+            /* background-color: rgb(182, 209, 233); */
+            width: 500px;
+            height: 200px;
+            /* padding: 50px 0 10px 20px; */
+        }
+        #btn{
+            background-color: rgb(0, 102, 255);
+            outline: none;
+            border: none;
+            border-radius: 5px;
+            width: 100px;
+            height: 30px;
+            color: white;
+            margin-bottom: 50px;
+        }
+        #btn:hover{
+            background-color: rgb(76, 141, 238); ;
+        }
+        
+        .result{
+            margin-top: 10px;
+            border: 1px solid #f5f5f7;
+            border-radius: 15px;
+            padding-left: 100px;
+            padding-bottom: 5px;
+            color: #ffffff;
+            font-size: 30px;
+            /* background-color: #91c0df; */
+            background:transparent;
+            /* box-shadow: 1px 1px 10px 5px #fff; */
+            height: 50px;
+        }
+        
+        span{
+            color: #fff;
+            /* margin-bottom: 5px; */
+            font-size: 30px;
+            /* text-shadow: 3px 3px 0 rgb(92, 91, 91),
+                    -1px -1px 0 rgb(73, 72, 72),  
+                    1px -1px 0 #000,
+                    -1px 1px 0 #000,
+                    1px 1px 0 #000; */
+        }
+        
+
+    </style>
+
+</head>
+<body>
+
+
+    <div class="container">
+        
+            <h1>Welcome to the world of Sentiment</h1>
+        
+    <form name="myForm" action="getSentiment" method="post"  > 
+        <!-- onsubmit="return validateForm()" -->
+        {% csrf_token %}
+    <label for="txtarea">Enter the sentence:</label>
+    <input type="text" id="text" name="txtarea" >
+	<br><br>
+    <input type="submit" id= "btn" value="Analyze">
+    
+    </form>
+    <span>Analysis</span>
+    <div class="result" >
+        {{result}}
+        {{prob}}
+    </div>   
+
+
+</div>
+
+    
+
+   
+
+
+</body>
+</html>
